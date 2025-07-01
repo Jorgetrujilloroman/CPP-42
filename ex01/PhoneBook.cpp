@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 17:05:47 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/07/01 17:44:02 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/07/01 19:59:31 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,42 @@ void	PhoneBook::addContact() {
 
 	do	{
 		std::cout << "First name: ";
-		std::getline(std::cin, input);
+		if(!std::getline(std::cin, input)){
+			std::cout << "Input interrupted\n";
+			return ;
+		}
 	} while(input.empty());
 	newContact.setFirstName(input);
 	do	{
 		std::cout << "Last name: ";
-		std::getline(std::cin, input);
+		if(!std::getline(std::cin, input)){
+			std::cout << "Input interrupted\n";
+			return ;
+		}
 	} while(input.empty());
 	newContact.setLastName(input);
 	do	{
 		std::cout << "Nickname: ";
-		std::getline(std::cin, input);
+		if(!std::getline(std::cin, input)){
+			std::cout << "Input interrupted\n";
+			return ;
+		}
 	} while(input.empty());
 	newContact.setNickname(input);
 	do	{
 		std::cout << "Phone number: ";
-		std::getline(std::cin, input);
+		if(!std::getline(std::cin, input)){
+			std::cout << "Input interrupted\n";
+			return ;
+		}
 	} while(input.empty());
 	newContact.setPhoneNumber(input);
 	do	{
 		std::cout << "Darkest secret: ";
-		std::getline(std::cin, input);
+		if(!std::getline(std::cin, input)){
+			std::cout << "Input interrupted\n";
+			return ;
+		}
 	} while(input.empty());
 	newContact.setDarkestSecret(input);
 
@@ -64,12 +79,12 @@ void PhoneBook::searchContacts() const {
 	std::cout << "|-------------------------------------------|" << std::endl;
 	std::cout << "|  Index   |First name| Last name| Nickname |" << std::endl;
 	std::cout << "|-------------------------------------------|" << std::endl;
-	for (int i = 0; i < contactsCount; ++i)
+	for (int i = 1; i <= contactsCount; ++i)
 	{
 		std::cout << "|" << std::setw(10) << i
-		<< "|" << formatField(contacts[i].getFirstName())
-		<< "|" << formatField(contacts[i].getLastName())
-		<< "|" << formatField(contacts[i].getNickname())
+		<< "|" << formatField(contacts[i - 1].getFirstName())
+		<< "|" << formatField(contacts[i - 1].getLastName())
+		<< "|" << formatField(contacts[i - 1].getNickname())
 		<< "|" << std::endl
 		<< "|-------------------------------------------|" << std::endl;
 	}
@@ -86,11 +101,11 @@ void PhoneBook::searchContacts() const {
 	bool validInput = true;
 	if (input.empty())
 		validInput = false;
-	for (size_t i; i < input.length(); i++)
+	for (size_t i = 0; i < input.length(); i++)
 		if (!isdigit(input[i]))
 			validInput = false;
 
-	int index = std::atoi(input.c_str());
+	int index = (std::atoi(input.c_str()) - 1);
 	if (!validInput || index < 0 || index >= contactsCount) {
 		std::cout << "Invalid index: Please, provide a valid index.\n\n";
 		return ;
