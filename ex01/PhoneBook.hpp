@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 17:49:29 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/06/30 18:32:32 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:33:55 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include "Contact.hpp"
 #include <iostream>
+#include <iomanip>
+#include <cstdlib>
 
 class PhoneBook
 {
