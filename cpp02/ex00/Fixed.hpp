@@ -6,12 +6,14 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 16:45:55 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/07/03 17:05:14 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:16:35 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 #define FIXED_HPP
+
+#include <iostream>
 
 class Fixed
 {
