@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 17:05:57 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/07/01 17:45:24 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/07/22 13:01:11 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int main() {
 
 	std::cout << "\nWelcome to My Awesome (crappy) PhoneBook!\n\n" ;
 	while (true) {
-		std::cout << "Enter a command: | ADD | SEARCH | EXIT |: ";
+		std::cout << "Enter a command (Caps sensitive): | ADD | SEARCH | EXIT |: ";
 		if (!std::getline(std::cin, command))
 			break;
-		if (command == "ADD" || command == "add")
+		if (command == "ADD")
 			PhoneBook.addContact();
-		else if (command == "SEARCH" || command == "search")
+		else if (command == "SEARCH")
 			PhoneBook.searchContacts();
-		else if (command == "EXIT" || command == "exit") {
+		else if (command == "EXIT") {
 			std::cout << "\nEXITING: All contacts has been removed. Goodbye!\n";
 			break ;
 		}

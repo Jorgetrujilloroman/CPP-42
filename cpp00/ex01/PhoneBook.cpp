@@ -6,13 +6,25 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 17:05:47 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/07/01 19:59:31 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/07/22 13:09:29 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook() : contactsCount(0), oldestIndex(0) {}
+
+static bool isValidInput(const std::string& str) {
+    if (str.empty()) {
+        std::cout << "Input cannot be empty.\n";
+        return false;
+    }
+    if (str.find('\t') != std::string::npos) {
+        std::cout << "Invalid input. Tab characters are not allowed.\n";
+        return false;
+    }
+    return true;
+}
 
 void	PhoneBook::addContact() {
 	Contact 	newContact;
@@ -24,39 +36,53 @@ void	PhoneBook::addContact() {
 			std::cout << "Input interrupted\n";
 			return ;
 		}
-	} while(input.empty());
+	} while(!isValidInput(input));
 	newContact.setFirstName(input);
+
 	do	{
 		std::cout << "Last name: ";
 		if(!std::getline(std::cin, input)){
 			std::cout << "Input interrupted\n";
 			return ;
 		}
-	} while(input.empty());
+	} while(!isValidInput(input));
 	newContact.setLastName(input);
+
 	do	{
 		std::cout << "Nickname: ";
 		if(!std::getline(std::cin, input)){
 			std::cout << "Input interrupted\n";
 			return ;
 		}
-	} while(input.empty());
+	} while(!isValidInput(input));
 	newContact.setNickname(input);
+
+	bool	isValidPhone;
 	do	{
 		std::cout << "Phone number: ";
 		if(!std::getline(std::cin, input)){
 			std::cout << "Input interrupted\n";
 			return ;
 		}
-	} while(input.empty());
+		isValidPhone = true;
+		for (size_t i = 0; i < input.length(); i++) {
+			if (!isdigit(input[i])){
+				isValidPhone = false;
+				break;
+			}
+		}
+		if (!isValidPhone)
+			std::cout << "Invalid phone number. Please, enter only digits \n";
+	} while(!isValidInput(input) || !isValidPhone);
 	newContact.setPhoneNumber(input);
+
 	do	{
 		std::cout << "Darkest secret: ";
 		if(!std::getline(std::cin, input)){
 			std::cout << "Input interrupted\n";
 			return ;
 		}
-	} while(input.empty());
+	} while(!isValidInput(input));
 	newContact.setDarkestSecret(input);
 
 	if (contactsCount < 8) {
