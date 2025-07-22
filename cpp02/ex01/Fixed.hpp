@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 16:45:55 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/07/08 19:46:48 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/07/22 18:42:28 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ public:
 	int		toInt( void ) const;
 };
 
-std::ostream	operator<<(std::ostream& os, const Fixed fixed);
+std::ostream&	operator<<(std::ostream& os, const Fixed& fixed);
 
 #endif
