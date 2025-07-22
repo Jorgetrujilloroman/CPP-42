@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 16:53:29 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/07/08 18:56:06 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:47:42 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ Fixed::Fixed() : _value(0) {
 
 Fixed::Fixed(const Fixed& copy) : _value(copy._value) {
 	std::cout << "Copy constructor called\n";
+}
+
+Fixed::Fixed(const int intNum) {
+	std::cout << "Int constructor called\n";
+	this->_value = intNum << _fractionalBits;
+}
+
+Fixed::Fixed(const float floatNum) {
+	std::cout << "Float constructor called\n";
+	this->_value = static_cast<int>(roundf(floatNum * (1 << _fractionalBits)));
 }
 
 Fixed& Fixed::operator = (const Fixed& copy){
@@ -39,3 +49,4 @@ int		Fixed::getRawBits( void ) const {
 void	Fixed::setRawBits( int const raw ){
 	this->_value = raw;
 }
+
