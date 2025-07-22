@@ -25,3 +25,5 @@ fclean: clean
 	@echo "$(RED).replace$(GREEN) files successfully deleted $(GREEN)!$(RESET)"
 
 re: fclean all
+
+.PHONY: all clean fclean re
