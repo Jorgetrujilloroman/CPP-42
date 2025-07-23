@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 16:45:55 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/07/22 20:20:42 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/07/23 12:21:56 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <climits>
 
 class Fixed {
 private:
