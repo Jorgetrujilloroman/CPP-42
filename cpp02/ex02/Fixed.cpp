@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 16:53:29 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/07/23 12:22:17 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/07/29 20:48:29 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,4 +124,39 @@ Fixed	Fixed::operator/(const Fixed& other) const {
 		result.setRawBits(static_cast<int>(scaledValue / other._value));
 		return (result);
 	}
+}
+
+Fixed	Fixed::operator++() {
+	this->_value += (1 << Fixed::_fractionalBits);
+	return *(this);
+}
+
+Fixed	Fixed::operator++(int) {
+	Fixed temp(*this);
+	this->_value += (1 << Fixed::_fractionalBits);
+	return (temp);
+}
+
+Fixed	Fixed::operator--() {
+	this->_value -= (1 << Fixed::_fractionalBits);
+	return (*this);
+}
+
+Fixed	Fixed::operator--(int) {
+	Fixed temp(*this);
+	this->_value -= (1 << Fixed::_fractionalBits);
+	return (temp);
+}
+
+// Using ternary operator: condition ? value_if_true : value_if_false
+Fixed&	Fixed::min(Fixed& a, Fixed& b) {
+	return (a < b) ? a : b;
+}
+
+Fixed&	Fixed::min(const Fixed& a, const Fixed& b) {
+	
+}
+
+Fixed&	Fixed::max(Fixed& a, Fixed& b) {
+	return (a > b) ? a : b;
 }
