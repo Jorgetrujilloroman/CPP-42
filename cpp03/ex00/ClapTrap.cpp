@@ -6,11 +6,15 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 12:57:12 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/07/31 15:40:49 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/07/31 15:48:08 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap() : _name("Default") {
+	std::cout << "Defualt ClapTrap constructor called \n";
+}
 
 ClapTrap::ClapTrap(std::string name) : _name(name) {
 	std::cout << "Claptrap constructor called with name: " << name << std::endl;
@@ -36,4 +40,16 @@ ClapTrap& ClapTrap::operator= (const ClapTrap& copy) {
 		_attackDamage = copy._attackDamage;
 	}
 	return (*this);
+}
+
+void attack(const std::string& target) {
+	
+}
+
+void takeDamage(unsigned int amount) {
+	
+}
+
+void beRepaired(unsigned int amount) {
+	
 }
