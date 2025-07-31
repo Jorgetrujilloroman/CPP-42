@@ -6,34 +6,13 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 18:49:56 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/07/22 19:53:39 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/07/31 11:48:50 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-int main( void ) {
-
-Fixed a;
-Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-
-std::cout << a << std::endl;
-std::cout << ++a << std::endl;
-std::cout << a << std::endl;
-std::cout << a++ << std::endl;
-std::cout << a << std::endl;
-
-std::cout << b << std::endl;
-
-std::cout << Fixed::max( a, b ) << std::endl;
-
-return 0;
-}
-
-// Full main test:
-
-/*
-
+// Test functions for comprehensive testing
 void testComparisons(const Fixed& a, const Fixed& b) {
     std::cout << "Comparisons between a = " << a << " and b = " << b << std::endl;
     std::cout << "a > b  : " << (a > b) << std::endl;
@@ -87,20 +66,27 @@ void testMinMax(Fixed& a, Fixed& b) {
     std::cout << std::endl;
 }
 
-int main() {
-    std::cout << "==== Constructors and Output ====" << std::endl;
+int main( void ) {
+    // ===== SUBJECT PROVIDED TESTS =====
+    std::cout << "===== SUBJECT TESTS =====" << std::endl;
+    
     Fixed a;
-    Fixed const b(Fixed(5.05f) * Fixed(2));
-    std::cout << "a: " << a << std::endl;
-    std::cout << "b: " << b << std::endl;
+    Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-    std::cout << "\n==== Increment and Decrement ====" << std::endl;
-    std::cout << ++a << std::endl;  // pre-increment
     std::cout << a << std::endl;
-    std::cout << a++ << std::endl;  // post-increment
+    std::cout << ++a << std::endl;
+    std::cout << a << std::endl;
+    std::cout << a++ << std::endl;
     std::cout << a << std::endl;
 
-    std::cout << "\n==== More Arithmetic ====" << std::endl;
+    std::cout << b << std::endl;
+
+    std::cout << Fixed::max( a, b ) << std::endl;
+    
+    // ===== ADDITIONAL COMPREHENSIVE TESTS =====
+    std::cout << "\n===== ADDITIONAL TESTS =====\n" << std::endl;
+    
+    std::cout << "==== More Arithmetic ====" << std::endl;
     Fixed x(10.5f);
     Fixed y(3);
     testArithmetic(x, y);
@@ -125,4 +111,3 @@ int main() {
 
     return 0;
 }
-*/

@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 16:53:29 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/07/29 20:48:29 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/07/31 11:41:48 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,25 +126,26 @@ Fixed	Fixed::operator/(const Fixed& other) const {
 	}
 }
 
+//  increase or decrease the fixed-point value by the smallest representable ϵ
 Fixed	Fixed::operator++() {
-	this->_value += (1 << Fixed::_fractionalBits);
+	this->_value += 1;
 	return *(this);
 }
 
 Fixed	Fixed::operator++(int) {
 	Fixed temp(*this);
-	this->_value += (1 << Fixed::_fractionalBits);
+	this->_value += 1;
 	return (temp);
 }
 
 Fixed	Fixed::operator--() {
-	this->_value -= (1 << Fixed::_fractionalBits);
+	this->_value -= 1;
 	return (*this);
 }
 
 Fixed	Fixed::operator--(int) {
 	Fixed temp(*this);
-	this->_value -= (1 << Fixed::_fractionalBits);
+	this->_value -= 1;
 	return (temp);
 }
 
@@ -153,10 +154,15 @@ Fixed&	Fixed::min(Fixed& a, Fixed& b) {
 	return (a < b) ? a : b;
 }
 
-Fixed&	Fixed::min(const Fixed& a, const Fixed& b) {
-	
+// Const version for read-only access to objects
+const Fixed&	Fixed::min(const Fixed& a, const Fixed& b) {
+	return (a < b) ? a : b;
 }
 
 Fixed&	Fixed::max(Fixed& a, Fixed& b) {
+	return (a > b) ? a : b;
+}
+
+const Fixed&	Fixed::max(const Fixed& a, const Fixed& b) {
 	return (a > b) ? a : b;
 }

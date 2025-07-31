@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 16:45:55 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/07/23 12:21:56 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/07/30 18:06:20 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ public:
 	Fixed	operator--(int);
 
 	static Fixed&	min(Fixed& a, Fixed& b);
-	static Fixed&	min(const Fixed& a, const Fixed& b);
+	const static Fixed&	min(const Fixed& a, const Fixed& b);
 	static Fixed&	max(Fixed& a, Fixed& b);
-	static Fixed&	max(const Fixed& a, const Fixed& b);
+	const static Fixed&	max(const Fixed& a, const Fixed& b);
 };
 
 // Streaming
