@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 12:57:12 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/07/31 18:38:47 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/08/01 11:50:21 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ ClapTrap::ClapTrap(std::string name)
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "ClapTrap Destructor called\n";
+	std::cout << "ClapTrap: " << this->_name << " Destructor called\n";
 }
 ClapTrap::ClapTrap(const ClapTrap& copy) 
 :	_name(copy._name),
@@ -56,24 +56,29 @@ void ClapTrap::attack(const std::string& target) {
 			this->_attackDamage << " points of damage!" << std::endl;
 		_energyPoints--;
 	} else {
-		std::cout << this->_name << "Hasn't enough enery or hit points to attack...\n";
+		std::cout << this->_name << " hasn't enough energy or hit points to attack...\n";
 	}
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
 	if (this->_hitPoints > 0) {
 		_hitPoints -= amount;
+		if (_hitPoints < 0)
+			_hitPoints = 0;
 		std::cout << this->_name << " was damaged and lost " << amount << " hit points." << std::endl;
-		std::cout << _name << "Remain hit points are: " << _hitPoints << std::endl; 
+		std::cout << _name << " Remain hit points are: " << _hitPoints << std::endl; 
 	} else {
 		std::cout << this->_name << "can't lose more hit points, because he is death" << std::endl;
 	}
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-	if (this->_energyPoints > 0) {
+	if (this->_energyPoints > 0 && this->_hitPoints > 0) {
 		this->_hitPoints += amount;
-		std::cout << this->_name << "has been repaired and now he has: "
-			<< this->_energyPoints << " left" << std::endl;
+		this->_energyPoints--;
+		std::cout << this->_name << " has been repaired, gaining: " << amount << " hit points.  Current HP: "
+			<< this->_hitPoints << std::endl;
+	} else {
+		std::cout << this->_name << " hasn't enough energy or hit points to be repaired..." << std::endl;
 	}
 }
