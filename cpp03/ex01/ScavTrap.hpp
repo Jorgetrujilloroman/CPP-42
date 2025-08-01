@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 12:06:26 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/08/01 12:48:33 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/08/01 18:09:55 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ public:
 	ScavTrap&	operator=(const ScavTrap& other);
 	~ScavTrap();
 	
-	void		guardGate();
+	// Override the attack from ClapTrap, so we need to define it here
+	void	attack(const std::string& target);
+	void	guardGate();
 };
 
 #endif

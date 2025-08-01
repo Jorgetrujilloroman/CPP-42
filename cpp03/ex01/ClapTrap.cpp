@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 12:57:12 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/08/01 11:50:21 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/08/01 17:42:56 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ClapTrap::ClapTrap()
 	std::cout << "Default ClapTrap constructor called \n";
 }
 
-ClapTrap::ClapTrap(std::string name) 
+ClapTrap::ClapTrap(const std::string& name) 
 :	_name(name),
 	_hitPoints(10),
 	_energyPoints(10),
