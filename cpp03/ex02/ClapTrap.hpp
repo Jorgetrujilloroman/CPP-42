@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 12:36:30 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/08/01 17:41:58 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/08/01 17:42:50 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class ClapTrap
 {
-private:
+protected:
 	std::string	_name;
 	int			_hitPoints;
 	int			_energyPoints;
