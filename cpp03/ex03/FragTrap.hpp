@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 12:06:26 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/08/04 16:32:14 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:38:13 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
+class FragTrap : virtual public ClapTrap {
 public:
 	FragTrap();
 	FragTrap(const std::string& name);

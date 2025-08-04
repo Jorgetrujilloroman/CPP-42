@@ -1,10 +1,11 @@
-NAME    = ex02
+NAME    = ex03
 CXX     = c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98 #-g
 
 SRC     = ClapTrap.cpp \
 			ScavTrap.cpp \
 			FragTrap.cpp \
+			DiamondTrap.cpp \
 			main.cpp \
 
 # Colors

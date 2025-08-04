@@ -6,50 +6,51 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 18:26:54 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/08/04 16:36:52 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:49:07 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void) {
-    std::cout << "--- ClapTrap Tests ---" << std::endl;
-    ClapTrap clap("Basic");
-    clap.attack("dummy");
-    clap.takeDamage(5);
-    clap.beRepaired(3);
+    std::cout << "--- DiamondTrap Basic Tests ---" << std::endl;
+    DiamondTrap diamond("Robot");
+    diamond.whoAmI();
+    diamond.attack("enemy");
+    diamond.takeDamage(30);
+    diamond.beRepaired(15);
+    diamond.guardGate();
+    diamond.highFivesGuys();
     
-    std::cout << "\n--- ScavTrap Tests ---" << std::endl;
-    ScavTrap scav("Destroyer");
-    scav.attack("enemy");
-    scav.takeDamage(30);
-    scav.beRepaired(10);
-    scav.guardGate();
-    
-    std::cout << "\n--- FragTrap Tests ---" << std::endl;
-    FragTrap frag("Boomer");
-    frag.attack("target");
-    frag.takeDamage(50);
-    frag.beRepaired(20);
-    frag.highFivesGuys();
+    std::cout << "\n--- Default Constructor ---" << std::endl;
+    DiamondTrap def;
+    def.whoAmI();
+    def.attack("target");
     
     std::cout << "\n--- Copy Tests ---" << std::endl;
-    FragTrap copy1(frag);
-    FragTrap copy2;
-    copy2 = frag;
+    DiamondTrap copy1(diamond);
+    copy1.whoAmI();
+    DiamondTrap copy2;
+    copy2 = diamond;
+    copy2.whoAmI();
     
-    std::cout << "\n--- Energy Test ---" << std::endl;
-    FragTrap tired("Exhausted");
-    for (int i = 0; i < 102; i++) {
-        tired.attack("target");
+    std::cout << "\n--- Attribute Tests ---" << std::endl;
+    DiamondTrap attr("Tester");
+    std::cout << "Testing hit points (should be 100):" << std::endl;
+    attr.takeDamage(50);
+    std::cout << "Testing energy points (should be 50):" << std::endl;
+    for (int i = 0; i < 52; i++) {
+        attr.attack("dummy");
     }
+    std::cout << "Testing attack damage (should be 30):" << std::endl;
+    DiamondTrap dmg("Damage");
+    dmg.attack("test");
     
     std::cout << "\n--- Death Test ---" << std::endl;
-    FragTrap dead("RIP");
-    dead.takeDamage(200);
+    DiamondTrap dead("Dead");
+    dead.takeDamage(150);
     dead.attack("ghost");
-    dead.highFivesGuys();
+    dead.whoAmI();
     
     std::cout << "\n--- End ---" << std::endl;
     return 0;

@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 12:06:26 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/08/04 17:38:29 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:29:32 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class ScavTrap : virtual public ClapTrap {
+class DiamondTrap : public ScavTrap, public FragTrap {
+private:
+	std::string _name;
 public:
-	ScavTrap();
-	ScavTrap(const std::string& name);
-	ScavTrap(const ScavTrap& copy);
-	ScavTrap&	operator=(const ScavTrap& other);
-	~ScavTrap();
+	DiamondTrap();
+	DiamondTrap(const std::string& name);
+	DiamondTrap(const DiamondTrap& copy);
+	DiamondTrap&	operator=(const DiamondTrap& other);
+	~DiamondTrap();
 	
-	// Override the attack from ClapTrap, so we need to define it here
 	void	attack(const std::string& target);
-	void	guardGate();
+	void	whoAmI();
 };
 
 #endif
