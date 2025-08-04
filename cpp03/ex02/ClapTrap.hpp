@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 12:36:30 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/08/01 17:42:50 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:20:44 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ protected:
 public:
 	ClapTrap();
 	ClapTrap(const std::string& name);
-	~ClapTrap();
+	virtual ~ClapTrap();
 	ClapTrap(const ClapTrap& copy);
 	ClapTrap& operator= (const ClapTrap& copy);
 
