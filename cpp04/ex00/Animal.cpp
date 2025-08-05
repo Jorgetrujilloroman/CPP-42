@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 19:40:12 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/08/05 20:00:33 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/08/05 20:03:45 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,18 @@ Animal::Animal(const Animal& copy) {
 
 Animal& Animal::operator= (const Animal& copy) {
 	if(this != &copy) {
-		
+		std::cout << "Animal copy assignment operator called\n";
+		type = copy.type;
 	}
+	return (*this);
 }
 
 // Functions
 
 std::string		Animal::getType() const {
-
+	
 }
 
 void	Animal::makeSound() const {
-
+	
 }
