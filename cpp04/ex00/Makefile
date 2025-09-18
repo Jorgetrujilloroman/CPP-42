@@ -3,6 +3,11 @@ CXX     = c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98 #-g
 
 SRC     = main.cpp \
+		Animal.cpp \
+		WrongAnimal.cpp \
+		Dog.cpp \
+		Cat.cpp \
+		WrongCat \
 
 # Colors
 GREEN   = \033[32m
