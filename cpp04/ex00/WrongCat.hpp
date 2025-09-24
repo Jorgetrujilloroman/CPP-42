@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 16:32:20 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/09/18 17:32:08 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:20:23 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class WrongCat : public WrongAnimal
 public:
 	WrongCat();
 	WrongCat(const std::string& type);
-	virtual ~WrongCat();
+	~WrongCat();
 	WrongCat(const WrongCat& copy);
 	WrongCat& operator= (const WrongCat& copy);
 

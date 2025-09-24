@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 16:32:20 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/09/18 16:55:01 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:43:10 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Dog : public Animal
 public:
 	Dog();
 	Dog(const std::string& type);
-	virtual ~Dog();
+	~Dog();
 	Dog(const Dog& copy);
 	Dog& operator= (const Dog& copy);
 

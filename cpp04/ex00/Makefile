@@ -7,7 +7,7 @@ SRC     = main.cpp \
 		WrongAnimal.cpp \
 		Dog.cpp \
 		Cat.cpp \
-		WrongCat \
+		WrongCat.cpp \
 
 # Colors
 GREEN   = \033[32m

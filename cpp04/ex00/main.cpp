@@ -6,14 +6,13 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 19:23:34 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/09/18 17:06:51 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:44:40 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
 int main()
@@ -24,9 +23,10 @@ int main()
     const Animal* i = new Cat();
     
     std::cout << j->getType() << " " << std::endl;
+	j->makeSound();
     std::cout << i->getType() << " " << std::endl;
     i->makeSound();
-    j->makeSound();
+    std::cout << meta->getType() << " " << std::endl;
     meta->makeSound();
     
     delete meta;
@@ -39,6 +39,7 @@ int main()
     
     std::cout << wrongCat->getType() << " " << std::endl;
     wrongCat->makeSound(); // Should output WrongAnimal sound
+	std::cout << wrongMeta->getType() << " " << std::endl;
     wrongMeta->makeSound();
     
     delete wrongMeta;
@@ -67,7 +68,7 @@ int main()
     animals[2] = new Cat();
     
     for (int i = 0; i < 3; i++) {
-        std::cout << "Type: " << animals[i]->getType() << " Sound: ";
+        std::cout << "Type: " << animals[i]->getType() << " - Sound: ";
         animals[i]->makeSound();
     }
     
