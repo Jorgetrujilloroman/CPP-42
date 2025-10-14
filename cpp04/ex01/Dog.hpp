@@ -6,7 +6,7 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 16:32:20 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/09/24 14:17:24 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:11:46 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ public:
 	Dog& operator= (const Dog& copy);
 
 	void makeSound() const;
+	const Brain& getBrain() const;
+	Brain& getBrain();
 };
 
 #endif
