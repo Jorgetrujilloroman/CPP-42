@@ -8,6 +8,7 @@ SRC     = main.cpp \
 		Dog.cpp \
 		Cat.cpp \
 		WrongCat.cpp \
+		Brain.cpp \
 
 # Colors
 GREEN   = \033[32m

@@ -6,14 +6,13 @@
 /*   By: jotrujil <jotrujil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 19:23:34 by jotrujil          #+#    #+#             */
-/*   Updated: 2025/10/14 19:28:17 by jotrujil         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:35:49 by jotrujil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "Brain.hpp"
 
 int main() {
     std::cout << "=== CPP04 Exercise 01: Brain Tests ===\n" << std::endl;
@@ -76,9 +75,9 @@ int main() {
     std::cout << "Copied: " << copied.getBrain().getIdea(0) << std::endl;
     
     if (copied.getBrain().getIdea(0) != original->getBrain().getIdea(0)) {
-        std::cout << "✅ Deep copy SUCCESS!" << std::endl;
+        std::cout << "✅ Deep copy SUCCESS!" << std::endl << std::endl;
     } else {
-        std::cout << "❌ Shallow copy detected!" << std::endl;
+        std::cout << "❌ Shallow copy detected!" << std::endl<< std::endl;
     }
     
     // Assignment operator test
@@ -87,9 +86,9 @@ int main() {
     original->getBrain().setIdea(0, "MODIFIED AGAIN");
     
     if (assigned.getBrain().getIdea(0) != original->getBrain().getIdea(0)) {
-        std::cout << "✅ Assignment operator deep copy SUCCESS!" << std::endl;
+        std::cout << "✅ Assignment operator deep copy SUCCESS!" << std::endl<< std::endl;
     } else {
-        std::cout << "❌ Assignment operator shallow copy!" << std::endl;
+        std::cout << "❌ Assignment operator shallow copy!" << std::endl<< std::endl;
     }
     
     delete original;
