@@ -64,11 +64,18 @@ void				Bureaucrat::decrementGrade() {
 }
 
 void				Bureaucrat::signForm(Form& form) {
+	bool	wasSigned = form.getIsSigned();
+
 	try
 	{
 		form.beSigned(*this);
-		cout << this->_name << " has scucessfully signed a form named: "
-		 << form.getName() << endl;
+
+		if (wasSigned && form.getIsSigned())
+			cout << this->_name << " couldn't sign the form named: "
+		 		<< form.getName() << " because it was already signed." << endl;
+		else
+			cout << this->_name << " has successfully signed a form named: "
+		 		<< form.getName() << endl;
 	}
 	catch(Form::GradeTooLowException& e)
 	{
