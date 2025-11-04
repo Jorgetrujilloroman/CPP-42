@@ -30,7 +30,7 @@ int main() {
     test_title("2. Testing Successful Signing (beSigned/signForm)");
 
     try {
-        Bureaucrat b_boss("Mr. Boss", 5);
+        Bureaucrat b_boss("El jefazo", 5);
         Form f1("VacationRequest", 10, 5); // Requires grade 10 or better (lower number)
         
         std::cout << b_boss << std::endl;
@@ -47,7 +47,7 @@ int main() {
     test_title("3. Testing Failed Signing (Grade Too Low)");
 
     try {
-        Bureaucrat b_intern("Intern Dan", 140);
+        Bureaucrat b_intern("El becario", 140);
         Form f2("BudgetApproval", 50, 50); // Requires grade 50 or better
         
         std::cout << b_intern << std::endl;

@@ -1,15 +1,16 @@
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 using std::cout;
 using std::endl;
 
 const char*	Form::GradeTooHighException::what() const throw() {
-	return "Grade is too high (must be >= 1)";
+	return "Grade is too high";
 }
 
 const char*	Form::GradeTooLowException::what() const throw() {
-	return "Grade is too low (must be <= 150)";
+	return "Grade is too low";
 }
 
 Form::Form() : _name("Funny Form"), _isSigned(false),  _signMinGrade(75), _execMinGrade(75) {
