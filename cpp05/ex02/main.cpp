@@ -1,83 +1,122 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include <ctime>
+#include <cstdlib>
 
-void test_title(const std::string& title) {
-    std::cout << "\n--- " << title << " ---\n" << std::endl;
+void test_section(const std::string& title) {
+    std::cout << "\n=========================================\n";
+    std::cout << "TEST: " << title << "\n";
+    std::cout << "=========================================\n";
 }
 
 int main() {
-    
-    // --- 1. Test Form Validation (Constructor Exceptions) ---
-    test_title("1. Testing Form Constructor Exceptions");
-    
-    try {
-        // Case A: Grade Too High (Sign: 0)
-        Form f_invalid_high("HighPriority", 0, 100);
-        std::cout << "Error: Should not be created: " << f_invalid_high << std::endl;
-    } catch (std::exception &e) {
-        std::cerr << "Caught expected exception: " << e.what() << std::endl;
-    }
+    // CRITICAL: Initialize random seed for RobotomyRequestForm
+    std::srand(std::time(NULL)); 
 
-    try {
-        // Case B: Grade Too Low (Exec: 151)
-        Form f_invalid_low("LowPriority", 50, 151);
-        std::cout << "Error: Should not be created: " << f_invalid_low << std::endl;
-    } catch (std::exception &e) {
-        std::cerr << "Caught expected exception: " << e.what() << std::endl;
-    }
+    // --- 1. Testing Grade Too Low (Sign/Execute) ---
+    test_section("1. Test Grade Too Low (Signing & Executing)");
     
-    // --- 2. Test Successful Signing ---
-    test_title("2. Testing Successful Signing (beSigned/signForm)");
-
     try {
-        Bureaucrat b_boss("El jefazo", 5);
-        Form f1("VacationRequest", 10, 5); // Requires grade 10 or better (lower number)
+        Bureaucrat intern("Bob the Intern", 150);
+        ShrubberyCreationForm f1("Garden");
         
-        std::cout << b_boss << std::endl;
+        std::cout << intern << std::endl;
         std::cout << f1 << std::endl;
         
-        b_boss.signForm(f1);
+        // Fails to sign (needs 145)
+        intern.signForm(f1); 
         
-        std::cout << f1 << std::endl;
-    } catch (std::exception &e) {
+        // Fails to execute (needs 137)
+        intern.executeForm(f1); 
+        
+    } catch (std::exception& e) {
         std::cerr << "Caught unexpected exception: " << e.what() << std::endl;
     }
 
-    // --- 3. Test Failed Signing (GradeTooLowException) ---
-    test_title("3. Testing Failed Signing (Grade Too Low)");
-
+    // --- 2. Testing Execution Failure (Not Signed) ---
+    test_section("2. Test Form Not Signed Exception");
+    
     try {
-        Bureaucrat b_intern("El becario", 140);
-        Form f2("BudgetApproval", 50, 50); // Requires grade 50 or better
+        Bureaucrat mid_level("Alice", 50);
+        RobotomyRequestForm f2("Target_X"); // Needs sign 72, exec 45
         
-        std::cout << b_intern << std::endl;
-        std::cout << f2 << std::endl;
+        std::cout << mid_level << std::endl;
         
-        // This call should result in b_intern.signForm() calling f2.beSigned() which throws
-        b_intern.signForm(f2);
+        // Alice CAN sign (50 <= 72) but doesn't
+        // Alice CANNOT execute (50 > 45) but we test the 'Not Signed' first
         
-        std::cout << f2 << std::endl; // Should remain unsigned
-    } catch (std::exception &e) {
+        mid_level.executeForm(f2); // Should throw FormNotSignedException
+        
+    } catch (std::exception& e) {
         std::cerr << "Caught unexpected exception: " << e.what() << std::endl;
     }
 
-    // --- 4. Test Double Signing ---
-    test_title("4. Testing Signing an Already Signed Form");
+
+    // --- 3. Test Successful Execution (Polymorphism & File Creation) ---
+    test_section("3. Test Successful Shrubbery Creation");
     
     try {
-        Bureaucrat b_admin("Ms. Admin", 20);
-        Form f3("TravelVoucher", 30, 10);
+        Bureaucrat worker("Gardener", 130); // Grade 130 is high enough for Shrubbery
+        ShrubberyCreationForm f3("Park");
         
-        b_admin.signForm(f3); // First sign (success)
-        
-        // Second attempt to sign (should be caught/handled inside beSigned/signForm)
-        std::cout << "Attempting to sign again:" << std::endl;
-        b_admin.signForm(f3);
-        
+        worker.signForm(f3);
         std::cout << f3 << std::endl;
-    } catch (std::exception &e) {
+        
+        worker.executeForm(f3); // Creates file 'Park_shrubbery'
+        
+    } catch (std::exception& e) {
         std::cerr << "Caught unexpected exception: " << e.what() << std::endl;
     }
 
+    // --- 4. Test High Grade Required Execution (Presidential Pardon) ---
+    test_section("4. Test Presidential Pardon (High Grade Exec)");
+    
+    AForm* f4 = NULL;
+    try {
+        Bureaucrat chief("The Chief", 6);
+        Bureaucrat president("Zaphod", 1);
+        
+        f4 = new PresidentialPardonForm("Criminal"); // Needs sign 25, exec 5
+        
+        chief.signForm(*f4); // Chief CAN sign (6 <= 25)
+        
+        // Chief cannot execute (6 > 5) -> GradeTooLowException
+        chief.executeForm(*f4); 
+
+        // President CAN execute (1 <= 5)
+        president.executeForm(*f4); 
+
+    } catch (std::exception& e) {
+        std::cerr << "Caught exception: " << e.what() << std::endl;
+    }
+    if (f4) delete f4; // Cleanup
+
+    // --- 5. Test Robotomy (50% Chance) ---
+    test_section("5. Test Robotomy (Requires Sign 72, Exec 45)");
+
+    AForm* f5 = new RobotomyRequestForm("Subject_A");
+    AForm* f6 = new RobotomyRequestForm("Subject_B");
+    Bureaucrat surgeon("Dr. Surgeon", 40); // Grade 40 is good for both sign (72) and exec (45)
+
+    try {
+        surgeon.signForm(*f5);
+        surgeon.signForm(*f6);
+
+        std::cout << "--- Executing first subject (50/50):" << std::endl;
+        surgeon.executeForm(*f5); 
+
+        std::cout << "--- Executing second subject (50/50):" << std::endl;
+        surgeon.executeForm(*f6); 
+        
+    } catch (std::exception& e) {
+        std::cerr << "Caught exception: " << e.what() << std::endl;
+    }
+
+    delete f5;
+    delete f6;
+    
     return 0;
 }

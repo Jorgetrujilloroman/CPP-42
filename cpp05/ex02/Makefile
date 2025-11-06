@@ -4,7 +4,11 @@ CXXFLAGS= -Wall -Wextra -Werror -std=c++98
 
 SRC     = main.cpp \
 		Bureaucrat.cpp \
-		Form.cpp \
+		AForm.cpp \
+		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp \
+
 
 # Colors
 GREEN   = \033[32m

@@ -1,6 +1,6 @@
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 using std::cout;
 using std::endl;
@@ -63,7 +63,7 @@ void				Bureaucrat::decrementGrade() {
 	cout << this->_name << "'s grade decremented to: " << this->_grade << endl;
 }
 
-void				Bureaucrat::signForm(Form& form) {
+void				Bureaucrat::signForm(AForm& form) {
 	bool	wasSigned = form.getIsSigned();
 
 	try
@@ -77,18 +77,36 @@ void				Bureaucrat::signForm(Form& form) {
 			cout << this->_name << " has successfully signed a form named: "
 		 		<< form.getName() << endl;
 	}
-	catch(Form::GradeTooLowException& e)
+	catch(AForm::GradeTooLowException& e)
 	{
 		std::cerr << this->_name << " couldn't sign form named: " << form.getName() 
 		 << " because " << e.what() << endl;
 	}
-	catch(std::exception e)
+	catch(std::exception& e)
 	{
 		std::cerr << this->_name << " couldn't sign form named: " << form.getName() 
 		 << " because of an unexpected error" << e.what() << endl;
 	}
 	
 }
+
+void				Bureaucrat::executeForm(AForm const & form) const {
+	try {
+		form.execute(*this);
+		cout << this->_name << " executes " << form.getName() << endl;
+	}
+	catch (AForm::FormNotSignedException& e) {
+		std::cerr << this->_name << " cannot execute" << form.getName() << " because: " << e.what() << endl;
+	}
+	catch (AForm::GradeTooLowException& e) {
+		std::cerr << this->_name << " cannot execute" << form.getName() << " because: " << e.what() << endl;
+	}
+	catch (std::exception& e) {
+		std::cerr << this->_name << " cannot execute" << form.getName() << " because unexpected error: " << e.what() << endl;
+	}
+
+}
+
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {
 	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
 	return os;
