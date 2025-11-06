@@ -35,7 +35,8 @@ Form::~Form() {
 	cout << "This Form was recycled... (object destroyed)" << endl;
 }
 
-Form::Form(const Form& copy) : _name(copy._name), _signMinGrade(copy._signMinGrade), _execMinGrade(copy._execMinGrade) {
+Form::Form(const Form& copy) : _name(copy._name), _isSigned(copy._isSigned), _signMinGrade(copy._signMinGrade),
+ _execMinGrade(copy._execMinGrade) {
 	cout << "Copy constructor called for Form: " << _name << endl;
 }
 
