@@ -7,9 +7,9 @@
 #include <cstdlib>
 
 void test_section(const std::string& title) {
-    std::cout << "\n=========================================\n";
+    std::cout << "\n=============================================================\n";
     std::cout << "TEST: " << title << "\n";
-    std::cout << "=========================================\n";
+    std::cout << "=============================================================\n";
 }
 
 int main() {
@@ -40,7 +40,7 @@ int main() {
     test_section("2. Test Form Not Signed Exception");
     
     try {
-        Bureaucrat mid_level("Alice", 50);
+        Bureaucrat mid_level("Puidgemont", 50);
         RobotomyRequestForm f2("Target_X"); // Needs sign 72, exec 45
         
         std::cout << mid_level << std::endl;
@@ -77,7 +77,7 @@ int main() {
     AForm* f4 = NULL;
     try {
         Bureaucrat chief("The Chief", 6);
-        Bureaucrat president("Zaphod", 1);
+        Bureaucrat president("Pedro Sanxe", 1);
         
         f4 = new PresidentialPardonForm("Criminal"); // Needs sign 25, exec 5
         
