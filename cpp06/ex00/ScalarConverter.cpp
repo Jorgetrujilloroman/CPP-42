@@ -10,13 +10,16 @@ using std::cout;
 using std::endl;
 
 ScalarConverter::ScalarConverter() {}
+
 ScalarConverter::ScalarConverter(const ScalarConverter& copy) {
 	(void)copy;
 }
+
 ScalarConverter& ScalarConverter::operator= (const ScalarConverter& copy) {
 	(void)copy;
 	return (*this);
 }
+
 ScalarConverter::~ScalarConverter() {}
 
 void	ScalarConverter::convert(const std::string& literal) {
