@@ -21,6 +21,7 @@ int main() {
     uintptr_t raw_value = Serializer::serialize(original_ptr);
     
     cout << "\nRaw Integer Value: " << raw_value << endl;
+	cout << "Raw Integer value Hex format: 0x" << std::hex << raw_value << std::dec << endl;
 
     cout << "\nDeserializing the number to retrieve the address..." << endl;
     Data* deserialized_ptr = Serializer::deserialize(raw_value);

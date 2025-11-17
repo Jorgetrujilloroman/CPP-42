@@ -4,9 +4,6 @@
 using std::cout;
 using std::endl;
 
-Serializer::Serializer() {
-}
-
 Serializer::Serializer(const Serializer& copy) {
 	(void)copy;
 }
@@ -14,9 +11,6 @@ Serializer::Serializer(const Serializer& copy) {
 Serializer& Serializer::operator=(const Serializer& copy) {
 	(void)copy;
 	return *this;
-}
-
-Serializer::~Serializer() {
 }
 
 uintptr_t Serializer::serialize(Data* ptr) {
