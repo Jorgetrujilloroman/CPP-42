@@ -3,7 +3,7 @@ CXX     = c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98
 
 SRC     = main.cpp \
-		Serializer.cpp \
+		Base.cpp \
 
 # Colors
 GREEN   = \033[32m

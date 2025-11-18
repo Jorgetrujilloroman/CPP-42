@@ -13,23 +13,18 @@ using std::endl;
 Base* generate(void) {
 	int	random_class = std::rand() % 3;
 
-	switch (random_class)
-	{
+	switch (random_class) {
 	case 0:
 		cout << "Returning Class A object" << endl;
 		return new A();
-		break;
 	case 1:
 		cout << "Returning Class B object" << endl;
 		return new B();
-		break;
 	case 2:
 		cout << "Returning Class C object" << endl;
 		return new C();
-		break;
 	default:
 		return NULL;
-		break;
 	}
 }
 
@@ -50,8 +45,28 @@ void identify(Base& p) {
 	cout << "Identifying class type using reference..." << endl;
 
 	Base* pointer = &p;
+	identify(pointer);
 }
 
 int	main(void) {
 	std::srand(std::time(NULL));
+
+	cout << "\n--- Testing different identification functions ---\n" << endl;
+
+	for (int i = 0; i <= 5; i++) {
+
+		Base* random_type = generate();
+
+		if (!random_type)
+			return 1;
+		
+		cout << "Testing pointer identifier: " << endl;
+		identify(random_type);
+		cout << endl;
+		cout << "Testing reference identifier: " << endl;
+		identify(*random_type);
+
+		cout << " ---------- " << endl;
+	}
+	return 0;
 }
