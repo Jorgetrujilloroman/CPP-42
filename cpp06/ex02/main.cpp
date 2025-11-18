@@ -53,13 +53,14 @@ int	main(void) {
 
 	cout << "\n--- Testing different identification functions ---\n" << endl;
 
-	for (int i = 0; i <= 5; i++) {
+	for (int i = 0; i < 5; i++) {
 
 		Base* random_type = generate();
 
 		if (!random_type)
 			return 1;
 		
+		cout << endl;
 		cout << "Testing pointer identifier: " << endl;
 		identify(random_type);
 		cout << endl;
