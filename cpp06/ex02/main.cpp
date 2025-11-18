@@ -68,6 +68,8 @@ int	main(void) {
 		identify(*random_type);
 
 		cout << " ---------- " << endl;
+
+		delete random_type;
 	}
 	return 0;
 }
