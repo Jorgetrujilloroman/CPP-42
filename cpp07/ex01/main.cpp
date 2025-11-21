@@ -1,49 +1,55 @@
 #include <iostream>
-#include <string>
 #include "iter.hpp"
 
+using std::cout;
+using std::endl;
+
+// Print element (const)
 template <typename T>
-void print(const T& element) {
+void printElement(const T& element) {
     std::cout << element << " ";
 }
 
+// Increment element (non const)
 template <typename T>
-void increment(T& element) {
-    element++;
-}
-
-void increment(std::string& s) {
-    s += "!";
+void incrementElement(T& element) {
+    ++element;
 }
 
 int main() {
-    int nums[] = {1, 2, 3};
-    size_t len_n = 3;
 
-    std::cout << "Original nums: ";
-    iter(nums, len_n, print<int>); // CORREGIDO
-    std::cout << std::endl;
+    // Int Array
+    int intArray[] = {1, 2, 3, 4, 5};
+    size_t intArraySize = sizeof(intArray) / sizeof(intArray[0]);
 
-    iter(nums, len_n, increment<int>); // CORREGIDO
+    cout << "\nInteger array before incrementing: ";
+    iter(intArray, intArraySize, &printElement<int>);
+    cout << endl;
 
-    std::cout << "Modified nums: ";
-    iter(nums, len_n, print<int>); // CORREGIDO
-    std::cout << std::endl;
+    iter(intArray, intArraySize, &incrementElement<int>);
 
-    std::cout << "---" << std::endl;
+    cout << "Int array after incrementing: ";
+    iter(intArray, intArraySize, &printElement<int>);
+    cout << endl << endl;
 
-    std::string words[] = {"Hola", "42", "Cplusplus"};
-    size_t len_w = 3;
+    // String array
+    std::string strArray[] = {"Hola", "k", "ase"};
+    size_t strArraySize = sizeof(strArray) / sizeof(strArray[0]);
 
-    std::cout << "Original words: ";
-    iter(words, len_w, print<std::string>); // CORREGIDO
-    std::cout << std::endl;
+    cout << "String array: ";
+    iter(strArray, strArraySize, &printElement<std::string>);
+    cout << endl << endl;
 
-	iter(words, len_w, increment);
+    // Char array
+    char charArray[] = {'J', 'o', 'a', 'q', 'u', 'i', 'n'};
+    size_t charArraySize = sizeof(charArray) / sizeof(charArray[0]);
 
-    std::cout << "Modified words: ";
-    iter(words, len_w, print<std::string>); // CORREGIDO
-    std::cout << std::endl;
+    cout << "Char array: ";
+    iter(charArray, charArraySize, &printElement<char>);
+    cout << endl << "Encrypted char array: ";
+    iter(charArray, charArraySize, &incrementElement<char>);
+    iter(charArray, charArraySize, &printElement<char>);
+    cout << endl << endl;
 
     return 0;
 }
