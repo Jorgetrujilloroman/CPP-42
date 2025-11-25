@@ -1,16 +1,15 @@
-#include <cstddef>
 #include "Array.hpp"
 
 template <typename T>
-Array<T>::Array() : _size(0), _data(nullptr) {}
+Array<T>::Array() : _size(0), _data(NULL) {}
 
 template <typename T>
-Array<T>::Array(unsigned int n) : _size(n), _data(nullptr) {
+Array<T>::Array(unsigned int n) : _size(n), _data(NULL) {
 	_data = new T[n]();
 }
 
 template <typename T>
-Array<T>::Array(const Array& copy) : _size(copy._size), _data(nullptr) {
+Array<T>::Array(const Array& copy) : _size(copy._size), _data(NULL) {
 	if(_size > 0) {
 		_data = new T[_size];
 		for(size_t i = 0; i < _size; i++)
@@ -28,7 +27,7 @@ Array<T>& Array<T>::operator=(const Array& copy) {
 	if (this != &copy) {
 		delete [] _data;
 		_size = copy._size;
-		_data = nullptr;
+		_data = NULL;
 
 		if(_size > 0) {
 		_data = new T[_size];
