@@ -6,12 +6,15 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <stdexcept>
 
 using std::cout;
 using std::endl;
 
 Base* generate(void) {
 	int	random_class = std::rand() % 3;
+
+	cout << "Generating random class: ";
 
 	switch (random_class) {
 	case 0:
@@ -44,8 +47,28 @@ void identify(Base* p) {
 void identify(Base& p) {
 	cout << "Identifying class type using reference..." << endl;
 
-	Base* pointer = &p;
-	identify(pointer);
+	try {
+		A& a = dynamic_cast<A&>(p);
+		(void)a;
+		cout << "Object Class: A" << endl;
+		return ;
+	} catch (const std::exception& e) {}
+
+	try {
+		B& b = dynamic_cast<B&>(p);
+		(void)b;
+		cout << "Object Class: B" << endl;
+		return ;
+	} catch (const std::exception& e) {}
+
+	try {
+		C& c = dynamic_cast<C&>(p);
+		(void)c;
+		cout << "Object Class: C" << endl;
+		return ;
+	} catch (const std::exception& e) {}
+
+	cout << "UTO 👽 (Unknown Type of Object)" << endl;
 }
 
 int	main(void) {
