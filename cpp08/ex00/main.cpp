@@ -3,12 +3,9 @@
 #include <list>
 #include "easyfind.hpp"
 
-using std::cout;
-using std::endl;
-
 int	main() {
 
-	cout << "\n\n--- Vector ---" << endl;
+	std::cout << "\n\n--- Vector ---" << std::endl;
 	std::vector<int> vector_numbers;
 
 	vector_numbers.push_back(13);
@@ -18,23 +15,23 @@ int	main() {
 	int	exist = 1312;
 	int not_exist = 7;
 
-	cout << "Searching for target number: " << exist << endl;
+	std::cout << "Searching for target number: " << exist << std::endl;
 	try {
 		std::vector<int>::iterator it = easyfind(vector_numbers, exist);
-		cout << "Number: " << *it << " was found" << endl;
+		std::cout << "Number: " << *it << " was found" << std::endl;
 	} catch (const NotFoundException& e){
-		cout << "Exception: " << e.what() << endl;
+		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	cout << "\nSearching for target number: " << not_exist << endl;
+	std::cout << "\nSearching for target number: " << not_exist << std::endl;
 	try {
 		std::vector<int>::iterator it = easyfind(vector_numbers, not_exist);
-		cout << "Number: " << *it << " was found" << endl;
+		std::cout << "Number: " << *it << " was found" << std::endl;
 	} catch (const NotFoundException& e){
-		cout << "Exception: " << e.what() << endl;
+		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	cout << "\n\n--- List ---" << endl;
+	std::cout << "\n\n--- List ---" << std::endl;
 	std::list<int> list_numbers;
 
 	list_numbers.push_back(17);
@@ -46,19 +43,19 @@ int	main() {
 	int	exist_too = 42;
 	int not_exist_either = 999;
 
-	cout << "Searching for target number: " << exist << endl;
+	std::cout << "Searching for target number: " << exist << std::endl;
 	try {
 		std::list<int>::iterator it = easyfind(list_numbers, exist_too);
-		cout << "Number: " << *it << " was found" << endl;
+		std::cout << "Number: " << *it << " was found" << std::endl;
 	} catch (const NotFoundException& e){
-		cout << "Exception: " << e.what() << endl;
+		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	cout << "\nSearching for target number: " << not_exist << endl;
+	std::cout << "\nSearching for target number: " << not_exist << std::endl;
 	try {
 		std::list<int>::iterator it = easyfind(list_numbers, not_exist_either);
-		cout << "Number: " << *it << " was found" << endl;
+		std::cout << "Number: " << *it << " was found" << std::endl;
 	} catch (const NotFoundException& e){
-		cout << "Exception: " << e.what() << endl;
+		std::cout << "Exception: " << e.what() << std::endl;
 	}
 }
