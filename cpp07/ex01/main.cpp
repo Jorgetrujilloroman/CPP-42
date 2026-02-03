@@ -1,9 +1,6 @@
 #include <iostream>
 #include "iter.hpp"
 
-using std::cout;
-using std::endl;
-
 // Print element (const)
 template <typename T>
 void printElement(const T& element) {
@@ -22,34 +19,34 @@ int main() {
     int intArray[] = {1, 2, 3, 4, 5};
     size_t intArraySize = sizeof(intArray) / sizeof(intArray[0]);
 
-    cout << "\nInteger array before incrementing: ";
+    std::cout << "\nInteger array before incrementing: ";
     iter(intArray, intArraySize, &printElement<int>);
-    cout << endl;
+    std::cout << std::endl;
 
     iter(intArray, intArraySize, &incrementElement<int>);
 
-    cout << "Int array after incrementing: ";
+    std::cout << "Int array after incrementing: ";
     iter(intArray, intArraySize, &printElement<int>);
-    cout << endl << endl;
+    std::cout << std::endl << std::endl;
 
     // String array
     std::string strArray[] = {"Hola", "k", "ase"};
     size_t strArraySize = sizeof(strArray) / sizeof(strArray[0]);
 
-    cout << "String array: ";
+    std::cout << "String array: ";
     iter(strArray, strArraySize, &printElement<std::string>);
-    cout << endl << endl;
+    std::cout << std::endl << std::endl;
 
     // Char array
     char charArray[] = {'J', 'o', 'a', 'q', 'u', 'i', 'n'};
     size_t charArraySize = sizeof(charArray) / sizeof(charArray[0]);
 
-    cout << "Char array: ";
+    std::cout << "Char array: ";
     iter(charArray, charArraySize, &printElement<char>);
-    cout << endl << "Encrypted char array: ";
+    std::cout << std::endl << "Encrypted char array: ";
     iter(charArray, charArraySize, &incrementElement<char>);
     iter(charArray, charArraySize, &printElement<char>);
-    cout << endl << endl;
+    std::cout << std::endl << std::endl;
 
     return 0;
 }
