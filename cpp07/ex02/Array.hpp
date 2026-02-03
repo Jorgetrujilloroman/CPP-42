@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
 #include <iostream>
 #include <cstddef>
@@ -30,3 +31,5 @@ public:
 };
 
 #include "Array.tpp"
+
+#endif
