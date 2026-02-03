@@ -10,8 +10,8 @@ int b = 3;
 std::cout << "a = " << a << ", b = " << b << std::endl;
 std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
 std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
-std::string c = "string1";
-std::string d = "string2";
+std::string c = "ola k ase 1";
+std::string d = "cola k ase 2";
 
 ::swap(c, d);
 std::cout << "c = " << c << ", d = " << d << std::endl;
