@@ -12,7 +12,10 @@ private:
 	satisfying the two-container requirement. */
 	std::vector<int>	_vec;
 	std::deque<int>		_deq;
-	bool	isValidInput (char **av);
+
+	bool				isValidInput (char **av);
+	std::vector<int>	generateJacobsthal(int n);
+	std::vector<int>	fordJohnsonSort(std::vector<int> &vector);
 public:
 	PmergeMe();
 	PmergeMe(const PmergeMe& copy);
