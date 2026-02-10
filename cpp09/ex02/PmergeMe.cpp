@@ -219,6 +219,7 @@ void	PmergeMe::sortVector(int ac, char **av) {
 void	PmergeMe::sortDeque(int ac, char **av) {
 	clock_t	start = clock();
 
+	_vec.clear();
 	for (int i = 1; i < ac; i++)
 		_deq.push_back(std::atoi(av[i]));
 	_deq = fordJohnsonSortDeque(_deq);
