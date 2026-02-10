@@ -14,8 +14,10 @@ private:
 	std::deque<int>		_deq;
 
 	bool				isValidInput (char **av);
-	std::vector<int>	generateJacobsthal(int n);
-	std::vector<int>	fordJohnsonSort(std::vector<int> &vector);
+	std::vector<int>	generateJacobsthalVector(int n);
+	std::vector<int>	fordJohnsonSortVector(std::vector<int> &vector);
+	std::deque<int>		generateJacobsthalDeque(int n);
+	std::deque<int>		fordJohnsonSortDeque(std::deque<int> &vector);
 public:
 	PmergeMe();
 	PmergeMe(const PmergeMe& copy);
